@@ -9,7 +9,35 @@ import NavButtons from './NavButtons';
 import { useUserContext } from '../context/user_context';
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>;
+  const isOpen = false;
+  return (
+    <SidebarContainer>
+      <aside className={isOpen ? 'sidebar show-sidebar' : 'sidebar'}>
+        <div className='sidebar-header'>
+          <img
+            src={logo}
+            alt='logo'
+            className='logo'
+          />
+          <button
+            type='button'
+            className='close-btn'>
+            <FaTimes />
+          </button>
+        </div>
+        <ul className='links'>
+          {links.map(({ id, text, url }) => (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className='cart-btn-wrapper'>
+          <NavButtons />
+        </div>
+      </aside>
+    </SidebarContainer>
+  );
 };
 
 const SidebarContainer = styled.div`
