@@ -9,10 +9,11 @@ import NavButtons from './NavButtons';
 import { useUserContext } from '../context/user_context';
 
 const Sidebar = () => {
-  const isOpen = false;
+  const { isSidebarOpen, closeSidebar } = useProductsContext();
   return (
     <SidebarContainer>
-      <aside className={isOpen ? 'sidebar show-sidebar' : 'sidebar'}>
+      <aside
+        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
         <div className='sidebar-header'>
           <img
             src={logo}
@@ -21,14 +22,19 @@ const Sidebar = () => {
           />
           <button
             type='button'
-            className='close-btn'>
+            className='close-btn'
+            onClick={closeSidebar}>
             <FaTimes />
           </button>
         </div>
         <ul className='links'>
           {links.map(({ id, text, url }) => (
             <li key={id}>
-              <Link to={url}>{text}</Link>
+              <Link
+                to={url}
+                onClick={closeSidebar}>
+                {text}
+              </Link>
             </li>
           ))}
         </ul>
