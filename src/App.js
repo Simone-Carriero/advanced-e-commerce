@@ -33,12 +33,12 @@ function App() {
           />
           <Route
             path='products'
-            element={<Products />}>
-            <Route
-              path=':id'
-              element={<SingleProduct />}
-            />
-          </Route>
+            element={<Products />}
+          />
+          <Route
+            path='products/:id'
+            element={<SingleProduct />}
+          />
           <Route
             path='checkout'
             element={<Checkout />}
