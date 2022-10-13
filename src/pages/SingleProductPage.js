@@ -19,13 +19,13 @@ const SingleProductPage = () => {
   const navigate = useNavigate();
   const {
     fetchSingleProduct,
-    singleProduct,
-    singleProductLoading: loading,
-    singleProductError: error,
+    single_product: product,
+    single_product_loading: loading,
+    single_product_error: error,
   } = useProductsContext();
 
   useEffect(() => {
-    fetchSingleProduct(url, id);
+    fetchSingleProduct(`${url}${id}`);
   }, [id]);
 
   useEffect(() => {
@@ -50,14 +50,13 @@ const SingleProductPage = () => {
     company,
     images,
     id: sku,
-    colors,
-  } = singleProduct;
+  } = product;
 
   return (
     <Wrapper>
       <PageHero
         title={name}
-        product={singleProduct}
+        product={product}
       />
       <div className='section section-center page'>
         <Link
@@ -87,7 +86,7 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            <AddToCart singleProduct={singleProduct} />
+            {stock > 0 && <AddToCart singleProduct={product} />}
           </section>
         </div>
       </div>

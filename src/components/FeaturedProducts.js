@@ -8,7 +8,7 @@ import Product from './Product';
 
 const FeaturedProducts = () => {
   const {
-    featuredProducts: featured,
+    featured_products: featured,
     productsLoading: loading,
     productsError: error,
   } = useProductsContext();
