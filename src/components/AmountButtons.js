@@ -4,16 +4,16 @@ import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const AmountButtons = ({ amount, increaseAmount, decreaseAmount }) => {
   return (
-    <Wrapper>
+    <Wrapper className='amount-btns'>
       <button
         type='button'
-        onClick={() => decreaseAmount()}>
+        onClick={decreaseAmount}>
         <FaMinus />
       </button>
       <h2>{amount}</h2>
       <button
         type='button'
-        onClick={() => increaseAmount()}>
+        onClick={increaseAmount}>
         <FaPlus />
       </button>
     </Wrapper>

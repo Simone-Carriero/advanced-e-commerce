@@ -7,6 +7,7 @@ import AmountButtons from './AmountButtons';
 
 const AddToCart = ({ singleProduct }) => {
   const { id, stock, colors = [] } = singleProduct;
+  const { addToCart } = useCartContext();
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
 
@@ -57,7 +58,8 @@ const AddToCart = ({ singleProduct }) => {
           />
           <Link
             to='/cart'
-            className='btn'>
+            className='btn'
+            onClick={() => addToCart(id, currentColor, amount, singleProduct)}>
             Add to cart
           </Link>
         </div>
