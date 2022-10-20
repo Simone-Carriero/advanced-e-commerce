@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { ProductsProvider } from './context/products_context';
@@ -8,8 +8,7 @@ import { CartProvider } from './context/cart_context';
 import { UserProvider } from './context/user_context';
 import { Auth0Provider } from '@auth0/auth0-react';
 
-const root = createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH_DOMAIN}
@@ -26,5 +25,6 @@ root.render(
         </ProductsProvider>
       </UserProvider>
     </Auth0Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
